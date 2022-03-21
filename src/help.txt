@@ -1,0 +1,35 @@
+public function user_login()
+    {   
+        $postdata = $_POST ?? array() ;
+        if (isset($postdata['email']) && isset($postdata['pass'])) {
+            $email = $postdata['email'] ;
+            $pass = $postdata['pass'] ;
+             $data['users'] = $this->model('User')::all() ;
+             $data['user'] = $this->model('User')::find(array('email'=>$email ,'pass'=> $pass));
+             $_SESSION['user'] = $data['user']->email ;
+        }
+             
+            //  print_r(count($data['user']));
+            if ($data['user']->email != $email and $data['user']->pass != $pass) {
+                $data['err'] = "please signup first !!" ;
+                // print_r($err);
+                $this->view('sign/signin', $data);
+        }   elseif ($data['user']->role == 'admin') {
+                // print_r($data['users']);
+                
+                $this->view('sign/dashboard', $data);
+            
+        } elseif ($data['user']->status == 'restrict') {
+            $data['res'] = "your account is restricted !!" ;
+                // print_r($err);
+                $this->view('sign/signin', $data);
+        } else {
+            // session_start();
+            $data['blogs'] = $this->model('Blog')::all() ;
+            // print_r($data['blogs']);
+            // $_SESSION['user'] = $data['user']->email ;
+            $this->view('home', $data);
+        } 
+       
+        
+    }
