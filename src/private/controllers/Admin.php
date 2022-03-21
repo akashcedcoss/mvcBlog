@@ -99,7 +99,7 @@ class Admin extends Controller
 
     public function list_blog() {
         $data = $this->model('Posts')::find('all');
-        $this->view('dashboard',$data);
+        $this->view('dashboard', $data);
 
 
     }
@@ -113,6 +113,11 @@ class Admin extends Controller
             $data = $this->model('Posts')::find_by_post_id($id);
             $data->delete();
 
+        }
+        if($value == "edit") {
+            $bid = $_POST['idd'];
+            $udata = $this->model('Posts')::find_by_post_id($bid);
+            $this->view('updateblog', $udata);
         }
         $data->save();
         // print_r($data);
@@ -141,6 +146,16 @@ class Admin extends Controller
         $udata = $this->model('Users')::find('all');
         $this->view('userlist', $udata);
 
+    }
+
+    public function update() {
+        $this->view('updateblog');
+    }
+
+    public function update_blog(){
+        echo "<pre>";
+        print_r($_SESSION['data']);
+        echo "</pre>";
     }
         
     

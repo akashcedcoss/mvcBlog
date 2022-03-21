@@ -1,3 +1,7 @@
+<?php
+// print_r($udata);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -75,36 +79,23 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Add blog</h1>
+        <h1 class="h2">Update blog</h1>
       </div>
 
-      <form class="row g-3" method = "POST" action = "http://localhost:8080/public/admin/post_blog">
+      <form class="row g-3" method = "POST" action = "http://localhost:8080/public/admin/update_blog">
        <input type = 'hidden' name = 'blog_id'>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Blog Category</label>
-          <input type="text" class="form-control" id="inputPassword4" name = "category" value = "">
-        </div>
+       
         <div class="col-12">
           <label for="inputAddress" class="form-label">Blog Title</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title" value = "">
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title" value = "<?php echo $udata; ?>">
         </div>
         <div class="col-12">
           <label for="inputAddress2" class="form-label">Blog Description</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "content" value = "">
+          <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "content" value = "<?php echo $udata->description;  ?>">
         </div>
-        <!-- <div class="col-md-6">
-          <label for="inputCity" class="form-label">Image</label>
-          <input type="file" class="form-control" id="inputCity" name = "image">
-        </div> -->
-       <?php if (isset($data['edit_data'])) {?>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary" name = "update">update blog</button>
+          <button type="submit" class="btn btn-primary" name = "update">Update Blog</button>
         </div>
-        <?php } else {?>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary" name = "submit">Add blog</button>
-        </div>
-        <?php }?>
       </form> 
     </main>
   </div>

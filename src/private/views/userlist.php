@@ -41,9 +41,9 @@
             <td><?php echo $val->status; ?></td>
       <td>
         <form action="user_authenticate" method="POST">
-          <input type="submit" name="submit" id="submit"  value="approved" class="btn btn-success">
+          <input type="submit" name="submit" id="submit"  value="Approved" class="btn btn-success">
           <input type="hidden" name="idd"   value="<?php echo $val->user_id ; ?>" class="btn btn-success">
-          <input type="submit" name="submit" id="submit"  value="restricted"  class="btn btn-danger">
+          <input type="submit" name="submit" id="submit"  value="Restricted"  class="btn btn-danger">
           <input type="submit" name="submit" id="submit"  value="delete"  class="btn btn-dark">
         </form>
 
