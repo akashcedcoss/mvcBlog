@@ -35,9 +35,6 @@
           <input type="hidden" name="idd"   value="<?php echo $val->post_id ; ?>" class="btn btn-success">
           <input type="submit" name="submit" id="submit"  value="reject"  class="btn btn-danger">
           <input type="submit" name="submit" id="submit"  value="delete"  class="btn btn-dark">
-          <?php if($val->user_id == "20") { ?>
-          <input type="submit" name="submit" id="submit"  value="edit"  class="btn btn-light">
-          <?php } ?>
         </form>
 
       </td>

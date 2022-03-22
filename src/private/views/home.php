@@ -59,13 +59,13 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="http://localhost:8080/public/admin/home">
               <span data-feather="home"></span>
-              home
+              Home
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="http://localhost:8080/public/admin/user_blogs">
               <span data-feather="file"></span>
-              my blog
+              My Blogs
             </a>
           </li>
          

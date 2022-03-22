@@ -1,7 +1,6 @@
 <?php
-// echo "hello";
 // echo "<pre>";
-// print_r($data);
+// print_r($_SESSION);
 // echo "</pre>";
 ?>
 <!DOCTYPE html>
@@ -15,6 +14,8 @@
     <title>Home</title>
 </head>
 <body>
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"></a>
@@ -34,22 +35,30 @@
 
 
 
-
-
 <?php foreach($data as $tal){
-   if($tal->status == 'approved'){
+// echo $tal->user_id;
+
   ?>
 <div class="container">
-
+<form action="blogedit" method="POST">
 <div class="card mt-5 " style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><?php echo $tal->post_id; ?></h5>
     <h5 class="card-title"><?php echo $tal->title; ?></h5>
     <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
     <p class="card-text"><?php echo $tal->content; ?>.</p>
+
+
+    
+          <input type="hidden" name="idd"   value="<?php echo $tal->post_id ; ?>" class="btn btn-success">
+          <?php if($tal->user_id == $_SESSION['login']['user_id']) { ?>
+          <input type="submit" name="submit" id="submit"  value="edit"  class="btn btn-dark">
+        
+
+
   </div>
 </div>
-
+          </form>
 </div>
     
 <?php }} ?>

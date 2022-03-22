@@ -105,6 +105,7 @@ class Admin extends Controller
     }
 
     public function authenticate() {
+        if(isset($_POST['submit'])) {
         $value = $_POST['submit'];
         $id = $_POST['idd'];
         $data = $this->model('Posts')::find_by_post_id($id);
@@ -114,16 +115,12 @@ class Admin extends Controller
             $data->delete();
 
         }
-        if($value == "edit") {
-            $bid = $_POST['idd'];
-            $udata = $this->model('Posts')::find_by_post_id($bid);
-            $this->view('updateblog', $udata);
-        }
         $data->save();
         // print_r($data);
         $udata = $this->model('Posts')::find('all');
         $this->view('dashboard', $udata);
     }
+}
 
     public function list_user() {
         $data = $this->model('Users')::find('all');
@@ -153,10 +150,34 @@ class Admin extends Controller
     }
 
     public function update_blog(){
-        echo "<pre>";
-        print_r($_SESSION['data']);
-        echo "</pre>";
+        // print_r($_POST);
+        $id = $_POST['blog_id'];
+        // echo $id;
+        $data = $this->model('Posts')::find(array('post_id'=> $id));
+        $data->update_attributes(array('title' => $_POST['title'] , 'content' => $_POST['content']));
+        $this->view('userblogs');
     }
+
+    public function user_blogs(){
+        $data = $this->model('Posts')::find_all_by_user_id($_SESSION['login']['user_id']);
+        $this->view('userblogs', $data);
+    }
+
+    public function blogedit(){
+        $id = $_POST['idd'];
+    
+        $data = $this->model('Posts')::find(array('post_id'=> $id));
+        $this->view('updateblog', $data);
+        
+    }
+
+    public function logout(){
+        session_destroy();
+        $this->view('sign/signin');
+    }
+    
+        
+    
         
     
 

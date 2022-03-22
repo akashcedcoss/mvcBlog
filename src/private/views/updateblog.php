@@ -1,5 +1,5 @@
 <?php
-// print_r($udata);
+// print_r($data);
 ?>
 
 <!doctype html>
@@ -83,18 +83,18 @@
       </div>
 
       <form class="row g-3" method = "POST" action = "http://localhost:8080/public/admin/update_blog">
-       <input type = 'hidden' name = 'blog_id'>
+       <input type = "hidden" name = "blog_id" value = "<?php echo $data->post_id; ?>" >
        
         <div class="col-12">
           <label for="inputAddress" class="form-label">Blog Title</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title" value = "<?php echo $udata; ?>">
+          <input type="text" class="form-control" id="inputAddress" placeholder="" name = "title" value = "<?php echo $data->title; ?>">
         </div>
         <div class="col-12">
           <label for="inputAddress2" class="form-label">Blog Description</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "content" value = "<?php echo $udata->description;  ?>">
+          <input type="text" class="form-control" id="inputAddress2" placeholder="" name = "content" value = "<?php echo $data->content;  ?>">
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary" name = "update">Update Blog</button>
+          <button type="submit" class="btn btn-primary" name = "submit">Update Blog</button>
         </div>
       </form> 
     </main>
